@@ -21,7 +21,7 @@ Service for providing versioned and hierarchical configurations (temporary title
     GET /config[/path]?name={fullName}&version={version}
     Get the configuration for a requestor with {fullName} and {version}
 
-*path is optional, by default get the entire configuration otherwise path will determine a value inside the configuration*
+*path is optional, by default get the entire configuration otherwise path will determine a key inside the configuration*
 
 *version is optional and by default is latest*
 
@@ -29,6 +29,19 @@ Service for providing versioned and hierarchical configurations (temporary title
 
     {
         config: {config},
+        version: {version}
+    }
+
+### Get Configuration Version (or maybe check?)
+
+    HEAD /config[/path]?name={fullName}
+    Get the latest version of the configuration
+
+*path is optional, by default check the entire configuration otherwise path will determine a key inside the configuration*
+
+**Output**
+
+    {
         version: {version}
     }
 
@@ -49,3 +62,21 @@ Service for providing versioned and hierarchical configurations (temporary title
         version: {the new version}
     }
 
+### Update Configuration
+
+    POST/PATCH /config[/path]?namespace={namespace}
+    Update the configuration for a specific namespace or for all if not passed
+
+*key that is not present will not remove an existing one*
+
+*the configuration is a json document passed in the request body.*
+
+*path is optional, by default will replace the entire configuration*
+
+*can pass more than 1 namespace in a request for changing configurations for several namespaces*
+
+**Output**
+
+    {
+        version: {the new version}
+    }
