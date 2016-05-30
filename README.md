@@ -6,7 +6,7 @@ Service for providing versioned and hierarchical configurations (temporary title
 
 **Configuration** - The configuration is represented as a json document.
 
-**Requestor** - Entity requesting for a configuration.
+**Requester** - Entity requesting for a configuration.
 
 **Namespace** - Describes the type of the requestor in a hierarchical way, for example: `AppName.Region.Role` or `MyApp.WestUS.FrontEnd`.
 
