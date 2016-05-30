@@ -80,3 +80,21 @@ Service for providing versioned and hierarchical configurations (temporary title
     {
         version: {the new version}
     }
+
+### Get Requesters
+
+    GET /requesters[/namespace]?fresh={from date}
+    Get the requesters stats
+
+*fresh determine how long back to look for requesters data*
+
+**Output**
+
+    [
+        {
+            fullName: {fullName},
+            latestRequest: {last time a HEAD or GET api was made for that fullName},
+            latestVersion: {last version requested}
+        }
+        ...
+    ]
